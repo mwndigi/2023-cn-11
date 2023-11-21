@@ -1,6 +1,6 @@
 # Øvelse 11 - Kryptografi
 
-Øvelse 1 – Kryptografi med ‘crypto’
+Øvelse 1 – Kryptografi med crypto
 
 Øvelse 2 – Express app med hashing af password
 
