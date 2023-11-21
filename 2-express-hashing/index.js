@@ -67,13 +67,14 @@ const getUserByUsername = (username) => {
   });
 };
 
-// Hashing af password med md5
-const md5sum = crypto.createHash("md5");
-const salt = "Some salt for the hash";
-
 // Funktion til at hashe password
 const hashPassword = (password) => {
-  return md5sum.update(password + salt).digest("hex");
+  const hash = crypto.createHash('sha256');
+  // For at bruge hashPassword mere end en gang, skal vi start og afslutte vores stream
+  // Det betyder at hashing operationen udføres hver gang vi kalder funktionen
+  const stream = hash.update(password, 'utf-8');
+  stream.end();
+  return hash.digest('hex');
 };
 
 // Hvis brugeren er logget ind, så sendes de til dashboard, ellers sendes de til login siden
